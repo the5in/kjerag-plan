@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Norway 2026 — Kjerag & Lysefjord Plan</title>
+<style>
+  :root{
+    --bg:#0a1622; --panel:#152a3f; --panel2:#1b3651; --ink:#e8f0f7; --muted:#9fb4c8;
+    --line:#26476a; --accent:#4ea1d3; --green:#7bd389; --warn:#f6ae2d; --danger:#ef6461;
+    --chip:#1f3e5c; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(180deg,#081019,#0a1622 45%);color:var(--ink);padding:0 0 90px}
+
+  header{padding:30px 22px 18px;max-width:940px;margin:0 auto}
+  h1{margin:0 0 4px;font-size:29px;letter-spacing:.3px}
+  .sub{color:var(--muted);font-size:15px}
+  .count{margin-top:15px;display:flex;gap:12px;flex-wrap:wrap}
+  .count .box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:9px 15px;text-align:center;min-width:66px}
+  .count .n{font-size:23px;font-weight:700;color:var(--green)}
+  .count .l{font-size:10.5px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
+
+  /* sticky nav */
+  nav{position:sticky;top:0;z-index:20;background:rgba(10,22,34,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);padding:9px 0}
+  nav .wrap{max-width:940px;margin:0 auto;padding:0 16px;display:flex;gap:7px;overflow-x:auto}
+  nav a{white-space:nowrap;color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;
+    padding:6px 11px;border-radius:999px;border:1px solid transparent}
+  nav a:hover{color:var(--ink);border-color:var(--line);background:var(--panel)}
+
+  main{max-width:940px;margin:0 auto;padding:0 22px}
+  section{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin:18px 0;scroll-margin-top:64px}
+  h2{margin:0 0 12px;font-size:20px;display:flex;align-items:center;gap:9px}
+  h2 .ico{font-size:21px}
+  h3{margin:16px 0 7px;font-size:15px;color:var(--accent);text-transform:uppercase;letter-spacing:.6px}
+  p{margin:8px 0}
+
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:9px 13px;flex:1 1 140px}
+  .stat .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted)}
+  .stat .v{font-size:15px;font-weight:600;margin-top:2px}
+
+  .chip{display:inline-block;background:var(--chip);border:1px solid var(--line);color:var(--accent);
+    border-radius:999px;padding:2px 11px;font-size:12.5px;font-weight:600;margin:2px 4px 2px 0}
+  .chip.day{background:#173a2a;border-color:#2f6b4a;color:var(--green)}
+
+  ul{margin:8px 0;padding-left:20px} li{margin:5px 0}
+
+  .callout{border-left:3px solid var(--accent);background:#122c40;padding:10px 14px;border-radius:0 10px 10px 0;margin:12px 0}
+  .callout.warn{border-color:var(--warn);background:#2a2410}
+  .callout.danger{border-color:var(--danger);background:#2c1414}
+  .callout.good{border-color:var(--green);background:#122c1e}
+  .callout b{color:var(--ink)}
+  .muted{color:var(--muted)}
+  .tag-open{color:var(--warn);font-weight:700;font-size:11.5px;letter-spacing:.5px}
+
+  /* schedule tables */
+  .tblwrap{overflow-x:auto;margin:8px 0;border:1px solid var(--line);border-radius:10px}
+  table{border-collapse:collapse;width:100%;min-width:340px;font-size:14.5px}
+  th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line)}
+  th{background:var(--panel2);color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.6px}
+  td:first-child{color:var(--accent);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+  tr:last-child td{border-bottom:none}
+
+  .route{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;
+    font-size:14px;line-height:1.9;color:var(--ink)}
+  .route .arw{color:var(--muted)}
+
+  /* checklists */
+  .cols{columns:2;column-gap:26px}
+  @media(max-width:620px){.cols{columns:1}}
+  label.chk{display:flex;gap:10px;align-items:flex-start;padding:5px 0;cursor:pointer;break-inside:avoid}
+  label.chk input{margin-top:4px;transform:scale(1.15);accent-color:var(--green)}
+  label.chk.crit .txt::before{content:"★ ";color:var(--warn)}
+  label.chk .txt{font-size:14.5px}
+
+  details{border:1px solid var(--line);border-radius:10px;padding:6px 12px;margin:8px 0;background:var(--panel2)}
+  summary{cursor:pointer;font-weight:600;padding:4px 0}
+
+  textarea{width:100%;min-height:90px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);
+    border-radius:10px;padding:10px;font:inherit;resize:vertical}
+  a{color:var(--accent)}
+  .foot{max-width:940px;margin:22px auto 0;padding:0 22px;color:var(--muted);font-size:13px}
+  .daytag{font-size:12px;font-weight:700;color:var(--green);letter-spacing:.5px}
+</style>
+</head>
+<body>
+<header>
+  <h1>🇳🇴 Norway 2026 — Kjerag &amp; Lysefjord</h1>
+  <div class="sub">2-day Kjerag backpacking loop + camping · <b>23–27 July 2026</b> · car parked at Øygardstøl the whole hike</div>
+  <div class="count" id="count"></div>
+</header>
+
+<nav><div class="wrap">
+  <a href="#overview">Overview</a>
+  <a href="#d23">Thu 23</a>
+  <a href="#d24">Fri 24</a>
+  <a href="#d25">Sat 25</a>
+  <a href="#d26">Sun 26</a>
+  <a href="#d27">Mon 27</a>
+  <a href="#weather">Weather &amp; safety</a>
+  <a href="#pack">Packing</a>
+  <a href="#food">Food &amp; water</a>
+  <a href="#booknow">To book</a>
+  <a href="#flights">Flights</a>
+  <a href="#notes">Notes</a>
+</div></nav>
+
+<main>
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <h2><span class="ico">🧭</span> The plan at a glance</h2>
+    <div class="route">
+      Stavanger <span class="arw">→</span> overnight Sirdal (Tjørhom) <span class="arw">→</span> <b>Øygardstøl</b>
+      <span class="arw">→</span> Kjerag / Kjeragbolten <span class="arw">→</span> <b>Langavatn</b> (mountain camp)
+      <span class="arw">→</span> back to Øygardstøl <span class="arw">→</span> Lysebotn campsite
+      <span class="arw">→</span> Stavanger hotel + spa/massage <span class="arw">→</span> home
+    </div>
+    <div class="row">
+      <div class="stat"><div class="k">Core hike</div><div class="v">2 days / 1 night</div></div>
+      <div class="stat"><div class="k">Total distance</div><div class="v">~25 km (12.5–15 + 12.5)</div></div>
+      <div class="stat"><div class="k">Style</div><div class="v">Backpacking w/ tent</div></div>
+      <div class="stat"><div class="k">Difficulty</div><div class="v">Strenuous · chains</div></div>
+    </div>
+    <div class="callout good">
+      <b>Why this shape:</b> the car stays parked at Øygardstøl for the whole hike — <b>no ferries, shuttles or one-way car drop to coordinate</b> — while still giving a real mountain camping experience rather than just the standard day hike.
+    </div>
+    <div class="callout warn">
+      <b>Don't treat Kjerag as an ordinary 15 km walk.</b> Steep, smooth granite slabs with fixed chains; officially rated strenuous. The classic round trip alone is ~11 km / 750–800 m ascent / 6–10 h — and you'll be carrying full camping kit, which makes it significantly harder.
+    </div>
+  </section>
+
+  <!-- THU 23 -->
+  <section id="d23">
+    <h2><span class="ico">🛬</span> Thu 23 Jul — <span class="daytag">ARRIVE · CAR · DRIVE TO SIRDAL</span></h2>
+    <p><b>Norwegian DY971</b> · Copenhagen (CPH) <b>17:35</b> → Stavanger (SVG) <b>18:45</b> · ref <b>[ref — ask Sin]</b>.<br>
+    <b>Car:</b> Avis <b>Polestar 2 Electric</b> · pickup <b>19:00</b> at Stavanger Sola Airport (Arrivals Hall, P4) · ref <b>[ref — ask Sin]</b>.<br>
+    <b>Sleep:</b> <b>Sirdal fjellpark</b>, Tjørhomfjellet 53, Tjørhom · Booking.com <b>[ref — ask Sin]</b>, PIN [ask Sin] · 1 night, paid NOK 1,200.</p>
+    <h3>On arrival</h3>
+    <ul>
+      <li>Collect checked bags + camping gear.</li>
+      <li>Pick up the rental car at the airport.</li>
+      <li>Buy breakfast, water &amp; final supplies for tomorrow.</li>
+      <li>Sleep near the airport / Sandnes / Ålgård.</li>
+    </ul>
+    <div class="callout good">
+      <b>Plan:</b> land 18:45 → bags + car (~19:00) → buy gas canister at <b>XXL Forus</b> (open to 20:00, ~12 min from airport) → drive up to <b>Sirdal fjellpark, Tjørhom</b> (~1h15, arrive ~20:45–21:00 in daylight). It stays light past 22:00 in late July, so this evening drive is fine — and it leaves only <b>~1 h to the trailhead Friday morning</b> instead of 2.5 h. You do the twisty mountain section fresh, in daylight.
+    </div>
+    <details>
+      <summary>Confirm tonight</summary>
+      <ul>
+        <li>Mountain weather forecast &amp; current Kjerag trail conditions</li>
+        <li>Rental company allows night self-collection</li>
+        <li>Fuel tank full enough</li>
+        <li>Offline maps + GPX downloaded</li>
+        <li>Spare gear left securely in the car</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- FRI 24 -->
+  <section id="d24">
+    <h2><span class="ico">⛰️</span> Fri 24 Jul — <span class="daytag">ØYGARDSTØL → KJERAG → LANGAVATN</span></h2>
+    <div class="row">
+      <div class="stat"><div class="k">Distance</div><div class="v">~12.5–15 km</div></div>
+      <div class="stat"><div class="k">Ascent</div><div class="v">~850 m</div></div>
+      <div class="stat"><div class="k">Time</div><div class="v">~8–9 h</div></div>
+      <div class="stat"><div class="k">Camp</div><div class="v">Langavatn (tent)</div></div>
+    </div>
+    <div class="tblwrap"><table>
+      <tr><th>Time</th><th>Activity</th></tr>
+      <tr><td>07:00–08:00</td><td>Wake, breakfast at Sirdal fjellpark</td></tr>
+      <tr><td>08:15–09:15</td><td>Drive Tjørhom → Øygardstøl (~1 h)</td></tr>
+      <tr><td>09:15–10:00</td><td>Park, sort gear, toilets, weather check</td></tr>
+      <tr><td>10:00</td><td><b>Start hiking</b> (leave by 10:00 — see turnaround rule)</td></tr>
+      <tr><td>~13:00</td><td>Reach Kjeragbolten area</td></tr>
+      <tr><td>13:00–14:00</td><td>Lunch, photos, break</td></tr>
+      <tr><td>14:00–18:30</td><td>Continue to Langavatn</td></tr>
+      <tr><td>18:30–19:30</td><td>Pitch tent, collect water, dinner</td></tr>
+      <tr><td>before 21:30</td><td>Rest</td></tr>
+    </table></div>
+    <h3>Route</h3>
+    <div class="route">
+      Øygardstøl <span class="arw">→</span> three ridges w/ chains <span class="arw">→</span> Kjerag plateau
+      <span class="arw">→</span> Nesatindane viewpoint <span class="arw">→</span> Kjeragbolten
+      <span class="arw">→</span> 1,075 m high point <span class="arw">→</span> Varmekrokheia plateau
+      <span class="arw">→</span> Langavatn (DNT cabin area)
+    </div>
+    <div class="callout warn">
+      <b>The first half is the hard half:</b> exposed granite slabs, steep up-and-down, chain sections, rock that's lethal when wet, and open windswept plateau. After Kjeragbolten it's still ~3 h to Langavatn. Rated expert-level with a full pack.
+    </div>
+    <h3>Camping at Langavatn</h3>
+    <ul>
+      <li>Camp on durable ground <b>away from the cabin entrance, water points &amp; the trail</b>.</li>
+      <li>Right-to-roam: ≥150 m from cabins/houses, ≤2 nights same spot, pack out all rubbish + toilet paper.</li>
+      <li>Follow any on-site DNT signs — terrain/rules may restrict pitching.</li>
+      <li><b>Toilet:</b> the Langavatn DNT cabin typically has an outhouse — use it if available (confirm on arrival). Toilets also at Øygardstøl car park &amp; Lysebotn campsite. If none available, dig a cathole ≥60 m from water/trail/cabin with a trowel — and <b>pack out used toilet paper</b> in a sealed bag rather than burying it (barely decomposes in cold alpine soil).</li>
+      <li><b>Water:</b> treat all lake/stream water — filter or purification tablets, not assumed safe as-is.</li>
+    </ul>
+    <div class="callout">
+      <b>Langavatn Turisthytte is a DNT self-service cabin</b> (unstaffed) — kitchen gear, bunks/duvets, a pay-as-you-go pantry. You're tenting nearby, but it's your <b>emergency shelter for Plan C</b> if weather turns. To actually get inside you need a <b>DNT membership</b> (860 NOK/yr, one person in your group is enough — sign up instantly online at dnt.no) and the <b>DNT key</b> (100 NOK refundable deposit). <b>Order the key by post via DNTbutikken (dnt.no's shop) to your Danish address</b> — don't plan to pick it up in Stavanger, you land 18:45 on the 23rd straight into car pickup + the drive to Sirdal, no time for an office detour. Order today given shipping lead time.
+    </div>
+  </section>
+
+  <!-- SAT 25 -->
+  <section id="d25">
+    <h2><span class="ico">🏕️</span> Sat 25 Jul — <span class="daytag">LANGAVATN → ØYGARDSTØL → LYSEBOTN</span></h2>
+    <div class="row">
+      <div class="stat"><div class="k">Distance</div><div class="v">~12.5 km</div></div>
+      <div class="stat"><div class="k">Ascent</div><div class="v">~550 m</div></div>
+      <div class="stat"><div class="k">Time</div><div class="v">~7–8 h</div></div>
+      <div class="stat"><div class="k">Night</div><div class="v">Lysebotn campsite</div></div>
+    </div>
+    <div class="tblwrap"><table>
+      <tr><th>Time</th><th>Activity</th></tr>
+      <tr><td>07:00</td><td>Wake</td></tr>
+      <tr><td>07:30–08:30</td><td>Breakfast, pack tent</td></tr>
+      <tr><td>08:30</td><td>Leave Langavatn</td></tr>
+      <tr><td>~12:00</td><td>Back in the Kjerag area</td></tr>
+      <tr><td>12:00–13:00</td><td>Lunch, rest</td></tr>
+      <tr><td>15:30–16:30</td><td>Back at Øygardstøl car park</td></tr>
+      <tr><td>17:00</td><td>Drive down the 27 hairpins to Lysebotn</td></tr>
+      <tr><td>after 17:30</td><td>Check in, shower, dinner</td></tr>
+    </table></div>
+    <div class="callout">
+      <b>Kjeragbolten on the return:</b> if Fri 24 was poor, save the photo for today. If you already did it, don't queue again — prioritise a safe descent.
+    </div>
+    <div class="callout danger">
+      <b>Never</b> step onto Kjeragbolten with a full pack · in wind/rain/wet rock · off the marked route · and don't take your pack off near the cliff edge.
+    </div>
+    <h3>Night: Kjerag Lysebotn Camping</h3>
+    <p>Tent pitches (first-come, usually space), showers, shared kitchen, BBQ, food service, cabins/rooms as backup. Purpose: shower, dry the tent, hot meal, recharge, and avoid two exposed nights. <span class="tag-open">Check cabin/room availability ahead if you might upgrade.</span></p>
+  </section>
+
+  <!-- SUN 26 -->
+  <section id="d26">
+    <h2><span class="ico">💆</span> Sun 26 Jul — <span class="daytag">RECOVERY · STAVANGER · SPA</span></h2>
+    <div class="tblwrap"><table>
+      <tr><th>Time</th><th>Activity</th></tr>
+      <tr><td>08:00–09:00</td><td>Wake, breakfast</td></tr>
+      <tr><td>09:00–10:30</td><td>Pack &amp; sort gear</td></tr>
+      <tr><td>~10:30</td><td>Leave Lysebotn</td></tr>
+      <tr><td>10:30–14:00</td><td>Drive to Stavanger via Sirdal (breaks + lunch)</td></tr>
+      <tr><td>14:30–16:00</td><td>Hotel, park/return car, check in</td></tr>
+    </table></div>
+    <div class="callout warn"><b>No big hike today.</b> After two backpacking days, legs/knees/ankles need recovery. Optional only: a 30–60 min flat walk, Stavanger old town &amp; harbour, stretching, pool/sauna.</div>
+    <h3>Hotel + massage — Scandic Royal Stavanger</h3>
+    <p>Central; indoor pool, hot tub, sauna, gym, parking; easy airport access next morning. Spa access can be limited on summer weekends — <b>reserve spa time ahead</b>.</p>
+    <div class="callout danger">
+      <b>Spa ≠ on-demand massage,</b> and 26 Jul is a <b>Sunday</b>. Book <b>1–2 weeks ahead</b>: room + spa slot, and a 60/75-min massage each (sports / deep-tissue / Thai). Ask if the hotel works with Royal Spa or a nearby provider; confirm Sunday hours + two simultaneous slots. <span class="tag-open">OPEN</span>
+    </div>
+    <div class="tblwrap"><table>
+      <tr><th>Time</th><th>Evening</th></tr>
+      <tr><td>16:00</td><td>Check in</td></tr>
+      <tr><td>16:30</td><td>Shower, rehydrate</td></tr>
+      <tr><td>17:00–18:15</td><td>Massage</td></tr>
+      <tr><td>18:30–19:30</td><td>Pool / hot tub / sauna</td></tr>
+      <tr><td>20:00</td><td>Proper dinner</td></tr>
+      <tr><td>by 22:30</td><td>Rest — go easy on alcohol (dehydration)</td></tr>
+    </table></div>
+  </section>
+
+  <!-- MON 27 -->
+  <section id="d27">
+    <h2><span class="ico">✈️</span> Mon 27 Jul — <span class="daytag">STAVANGER → COPENHAGEN</span></h2>
+    <p><b>Norwegian DY970</b> · Stavanger (SVG) <b>15:30</b> → Copenhagen (CPH) <b>16:40</b> · ref <b>[ref — ask Sin]</b>.</p>
+    <div class="tblwrap"><table>
+      <tr><th>Time</th><th>Activity</th></tr>
+      <tr><td>08:00–09:30</td><td>Breakfast</td></tr>
+      <tr><td>09:30–11:30</td><td>Relaxed old town / harbour walk</td></tr>
+      <tr><td>~12:15</td><td>Leave city for airport (~3 h before 15:30)</td></tr>
+      <tr><td>~13:00</td><td>Return car, bag drop, security</td></tr>
+      <tr><td>15:30</td><td>Depart SVG → CPH 16:40</td></tr>
+    </table></div>
+    <div class="callout warn">
+      <b>Camping gear &amp; flying:</b> trekking poles → checked. Camp stove → checked only if <b>zero fuel residue</b>. <b>Gas canisters: not allowed in cabin OR checked bags</b> — leave/dispose in Norway. Lighters/knives/multitools per airline rules. <b>Dry the tent</b> before packing to avoid leaks in the hold bag.
+    </div>
+  </section>
+
+  <!-- WEATHER & SAFETY -->
+  <section id="weather">
+    <h2><span class="ico">⚠️</span> Weather, turnaround &amp; bad-weather plans</h2>
+    <div class="callout danger">
+      <b>Turnaround rule (Fri 24):</b> leave Øygardstøl <b>no later than 10:00</b>. If flight/driving/gear delays mean you can't start before <b>11:00</b>, do <b>not</b> push to Langavatn — do the classic round trip only, sleep at Lysebotn, reassess.
+    </div>
+    <h3>Slippery rock is the real danger</h3>
+    <p>Not just heavy rain — risk spikes when it rained overnight, rock is still wet, wind is up, or low cloud kills visibility. The chains get far more slippery wet. If parking staff / local authorities advise against going, follow them.</p>
+    <h3>Bad-weather alternatives</h3>
+    <div class="callout"><b>Plan A — drop the mountain night:</b> Fri = classic Kjerag round trip only (~11 km, 6–10 h), back to Øygardstøl, sleep at Lysebotn.</div>
+    <div class="callout warn"><b>Plan B — skip Kjerag:</b> strong wind / steady rain / thunder / car park or trail closed → don't enter the plateau. Rest in Lysebotn, head back to Stavanger early, pick a low-altitude walk.</div>
+    <div class="callout danger"><b>Plan C — weather turns after Langavatn:</b> use the DNT cabin as emergency shelter; don't cross the plateau in very poor visibility; delay departure; in emergency call <b>113</b>.</div>
+    <h3>Pack-carrying safety on the chains</h3>
+    <ul>
+      <li>Heavy items close to your back; nothing loose inside.</li>
+      <li>Stow trekking poles for chain sections.</li>
+      <li>Keep distance; don't share the same chain section at once; never pull each other by the pack.</li>
+    </ul>
+    <div class="callout danger"><b>🆘 Norway emergency: 113.</b> Øygardstøl car park is ~7.5 km above Lysebotn, has toilets; <b>no toilets or bins on the trail</b>. Parking ≈300 NOK/vehicle (confirm nearer the date).</div>
+  </section>
+
+  <!-- PACKING -->
+  <section id="pack">
+    <h2><span class="ico">🎒</span> Packing &amp; equipment</h2>
+    <div class="callout">
+      <b>Target pack weight:</b> ~10–12 kg dry, ~13–15 kg with water+food — ideally ≤20–22% of body weight. The chains aren't for an 18–20 kg pack; split shared kit (tent, stove, cooking) between you.
+    </div>
+    <h3>Essentials <span class="muted" style="font-size:12px;font-weight:400">(★ = critical, ticks saved on this device)</span></h3>
+    <div id="pack-list" class="cols"></div>
+    <div class="callout warn">Even late July, the ~1000 m plateau can be cold, windy, wet &amp; foggy. Don't pack for Stavanger's temperature.</div>
+  </section>
+
+  <!-- FOOD & WATER -->
+  <section id="food">
+    <h2><span class="ico">🍫</span> Food &amp; water</h2>
+    <h3>Water</h3>
+    <ul>
+      <li>Start each day with 1.5–2 L.</li>
+      <li>Carry a filter or purification tablets — don't assume streams are safe, especially near trails/cabins/animals.</li>
+      <li>Electrolyte powder.</li>
+    </ul>
+    <h3>Food — 2 hiking days + 1 emergency meal</h3>
+    <ul>
+      <li>Day 1 lunch + dinner; Day 2 breakfast + lunch.</li>
+      <li>2–3 high-energy snacks per person per day.</li>
+      <li>1 spare freeze-dried emergency meal.</li>
+      <li>Aim ~2,500–3,200 kcal/person/day.</li>
+    </ul>
+    <p class="muted">Good options: freeze-dried meals, oats, nuts, energy bars, chocolate, dried sausage / hard cheese, crackers or flatbread, electrolyte drinks, instant coffee sachets.</p>
+  </section>
+
+  <!-- TO BOOK -->
+  <section id="booknow">
+    <h2><span class="ico">✅</span> Book &amp; confirm before departure</h2>
+    <div id="book-list"></div>
+  </section>
+
+  <!-- FLIGHTS -->
+  <section id="flights">
+    <h2><span class="ico">🛫</span> Flights &amp; key bookings</h2>
+    <p><b>Flights — Norwegian, ref [ref — ask Sin]</b> (booked 20 May 2026):<br>
+    • Out: <b>DY971</b> · Thu 23 Jul · CPH <b>17:35</b> → SVG <b>18:45</b><br>
+    • Back: <b>DY970</b> · Mon 27 Jul · SVG <b>15:30</b> → CPH <b>16:40</b><br>
+    Fare: <b>LowFare+</b> ✅ confirmed from booking — includes 1 checked bag (23 kg), the larger cabin bag (55×40×23cm), and a standard seat reservation. Nothing to add for baggage. Trekking poles &amp; stove go in the checked bag (can't fly in the cabin).</p>
+    <p><b>Rental car — Avis, ref [ref — ask Sin]</b> ✅ Polestar 2 Electric or similar. Pickup Thu 23 <b>19:00</b>, Stavanger Sola Airport (Arrivals Hall, P4) → return Mon 27 <b>15:00</b>, same location (total NOK 2,192.08, extra driver included). <i>Return ~12:45–13:00 for the 15:30 flight, not the full 15:00.</i> Bring: licence, credit card (traveller's card) in main driver's name.<br>
+    <span class="tag-open">CHECK: standard Avis coverage has a NOK 20,000 excess</span> — confirm your traveller's card card's rental cover actually applies (often requires declining the counter CDW and/or paying the full rental with that card).<br>
+    <i>Earlier Budget booking ([cancelled — n/a]) — cancelled.</i></p>
+    <p><b>Lodging:</b><br>
+    • Thu 23 — <b>Sirdal fjellpark</b>, Tjørhom ✅ Booking.com [ref — ask Sin], PIN [ask Sin], NOK 1,200<br>
+    • Fri 24 — Langavatn wild camp (tent)<br>
+    • Sat 25 — Lysebotn campsite (tent = just turn up; verify open)<br>
+    • Sun 26 — Scandic Royal Stavanger + spa/massage <span class="tag-open">OPEN</span></p>
+  </section>
+
+  <!-- NOTES -->
+  <section id="notes">
+    <h2><span class="ico">📝</span> Notes</h2>
+    <textarea id="notes-ta" placeholder="Booking refs, weather calls, GPX links, contacts…"></textarea>
+  </section>
+
+</main>
+
+<div class="foot">
+  Self-contained planner · checkbox &amp; note state saved in this browser (localStorage). Data mirror: <code>data/bookings.json</code>.
+  Re-verify live details (bus/road status, parking fee, cabin &amp; campsite info, spa hours) before travelling.<br>This is a shared copy with booking references/PINs redacted for privacy — ask Sin directly if you need one.
+</div>
+
+<script>
+  // ---- Countdown ----
+  (function(){
+    const start=new Date("2026-07-23T00:00:00");
+    const days=Math.ceil((start-new Date())/86400000);
+    document.getElementById("count").innerHTML=[
+      {n:days>0?days:0,l:"days to go"},{n:"2",l:"days on trail"},
+      {n:"1",l:"mountain camp"},{n:"25",l:"km hiking"}
+    ].map(b=>`<div class="box"><div class="n">${b.n}</div><div class="l">${b.l}</div></div>`).join("");
+  })();
+
+  // ---- Packing list ----
+  const packing=[
+    {t:"50–65 L backpack",c:1},{t:"Pack rain cover + waterproof liner",c:1},
+    {t:"Waterproof boots w/ ankle support",c:1},
+    {t:"Inspect old boots: flex-test soles (delamination), tread grip, re-proof + test walk",c:1},{t:"Trekking poles",c:0},
+    {t:"Waterproof shell jacket + trousers",c:1},{t:"Warm mid-layer",c:1},
+    {t:"Down / synthetic insulated jacket",c:1},{t:"Hat + gloves",c:1},
+    {t:"2 pairs dry socks",c:0},{t:"3-season tent (wind-resistant)",c:1},
+    {t:"Tent confirmed good: Naturehike WS013 2P, 1.77kg, 4-season, aluminum X-brace poles, 3000mm/5000mm waterproof — just have friend quick pitch-check for shipping damage",c:0},
+    {t:"Sleeping bag (comfort ~0–5°C)",c:1},{t:"Insulated sleeping mat",c:1},
+    {t:"Headlamp",c:1},{t:"Power bank",c:0},{t:"First-aid kit",c:1},
+    {t:"Blister care + elastic bandage",c:0},{t:"Paper map + compass",c:1},
+    {t:"Offline GPX route",c:1},{t:"Emergency thermal blanket",c:0},
+    {t:"Sunscreen + sunglasses",c:0},{t:"Insect repellent",c:0},
+    {t:"Rubbish bags",c:0},{t:"Trowel (cathole backup)",c:0},
+    {t:"Toilet paper + hand sanitizer + sealed bag (pack out used TP)",c:1},
+    {t:"Stove + cooking kit + pot",c:1},{t:"Water filter or purification tablets (Micropur/Aquatabs)",c:1},
+    {t:"1.5–2 L water capacity + electrolytes",c:1},
+    {t:"Spork/spoon — one each (easy to forget!)",c:1},{t:"Lightweight cup/mug — one each",c:0},
+    {t:"Instant coffee sachets/coffee bags (no extra brewing gear needed)",c:0}
+  ];
+  const booking=[
+    {t:"Checked bag confirmed included (LowFare+, 23kg) — nothing to add",c:0},
+    {t:"Online check-in from 24 h before each Norwegian flight",c:0},
+    {t:"Sat 25 — Lysebotn: verify open + pitch price (tent = just turn up, no booking)",c:0},
+    {t:"Scandic Royal Stavanger (or similar) for Sun 26",c:1},
+    {t:"Massage appointments for both — evening Sun 26",c:1},
+    {t:"Hotel spa access slot for Sun 26",c:0},
+    {t:"Lysebotn campsite — check cabin/room if upgrading",c:0},
+    {t:"Join DNT online (860 NOK/yr, 1 person enough) — for cabin key access",c:1},
+    {t:"Order DNT key by post (100 NOK deposit) via DNTbutikken.no to Danish address — TODAY, not a Stavanger pickup (no time window on arrival day)",c:1},
+    {t:"Official GPX: Langavatn–Kjerag–Øygardstøl",c:1},
+    {t:"Road, parking & Kjerag trail conditions",c:1},
+    {t:"Mountain weather at 48 h out AND hike morning",c:1}
+  ];
+
+  function render(list,elId,prefix){
+    document.getElementById(elId).innerHTML=list.map((x,i)=>{
+      const key=prefix+i, on=localStorage.getItem("kj_"+key)==="1";
+      return `<label class="chk ${x.c?'crit':''}"><input type="checkbox" data-k="${key}" ${on?'checked':''}><span class="txt">${x.t}</span></label>`;
+    }).join("");
+  }
+  render(packing,"pack-list","pk");
+  render(booking,"book-list","bk");
+
+  document.addEventListener("change",e=>{
+    if(e.target.matches('input[type=checkbox]'))
+      localStorage.setItem("kj_"+e.target.dataset.k,e.target.checked?"1":"0");
+  });
+
+  // ---- Notes ----
+  const ta=document.getElementById("notes-ta");
+  ta.value=localStorage.getItem("kj_notes")||"";
+  ta.addEventListener("input",()=>localStorage.setItem("kj_notes",ta.value));
+</script>
+</body>
+</html>
