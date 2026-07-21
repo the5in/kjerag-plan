@@ -69,6 +69,19 @@
     font-size:14px;line-height:1.9;color:var(--ink)}
   .route .arw{color:var(--muted)}
 
+  /* map */
+  .mapwrap{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:10px 0}
+  .mapwrap iframe{display:block;width:100%;height:360px;border:0}
+  .pins{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin:12px 0}
+  .pin{display:flex;gap:10px;align-items:center;background:var(--panel2);border:1px solid var(--line);
+    border-radius:10px;padding:9px 12px;text-decoration:none;color:var(--ink);font-size:13.5px}
+  .pin:hover{border-color:var(--accent)}
+  .pin .num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--chip);border:1px solid var(--line);
+    color:var(--accent);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .pin.hike .num{background:#173a2a;border-color:#2f6b4a;color:var(--green)}
+  .pin .lbl b{display:block} .pin .lbl span{color:var(--muted);font-size:11.5px}
+  .maplink{display:inline-block;margin-top:4px;font-weight:600}
+
   /* checklists */
   .cols{columns:2;column-gap:26px}
   @media(max-width:620px){.cols{columns:1}}
@@ -95,6 +108,7 @@
 </header>
 
 <nav><div class="wrap">
+  <a href="#map">Map</a>
   <a href="#overview">Overview</a>
   <a href="#d23">Thu 23</a>
   <a href="#d24">Fri 24</a>
@@ -110,6 +124,26 @@
 </div></nav>
 
 <main>
+
+  <!-- MAP -->
+  <section id="map">
+    <h2><span class="ico">🗺️</span> Route map</h2>
+    <div class="mapwrap">
+      <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?saddr=Stavanger%20lufthavn%20Sola&daddr=Sirdal%20fjellpark%20Tj%C3%B8rhom%20to:%C3%98ygardst%C3%B8l%20to:Kjerag%20Lysebotn%20Camping%20to:Stavanger&output=embed"></iframe>
+    </div>
+    <p class="muted">Interactive overview of the <b>driving</b> arc: Stavanger → Sirdal (Tjørhom) → Øygardstøl → Lysebotn → Stavanger. Needs internet — it's for planning, not trail navigation (use the offline GPX / downloaded map on the mountain). Google can't draw the <b>hiking</b> trail (Øygardstøl → Kjerag → Langavatn), so those are pins below, not a line.</p>
+    <div class="pins">
+      <a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Stavanger%20lufthavn%20Sola"><span class="num">1</span><span class="lbl"><b>Stavanger Airport (Sola)</b><span>Thu — land + car</span></span></a>
+      <a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Sirdal%20fjellpark%20Tj%C3%B8rhom"><span class="num">2</span><span class="lbl"><b>Sirdal fjellpark, Tjørhom</b><span>Thu night</span></span></a>
+      <a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%C3%98ygardst%C3%B8l%20Kjerag"><span class="num">3</span><span class="lbl"><b>Øygardstøl</b><span>Fri — trailhead, car parks here</span></span></a>
+      <a class="pin hike" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kjeragbolten"><span class="num">4</span><span class="lbl"><b>Kjeragbolten</b><span>the boulder (hike)</span></span></a>
+      <a class="pin hike" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Langavatn%20Turisthytte"><span class="num">5</span><span class="lbl"><b>Langavatn</b><span>Fri night — wild camp (hike)</span></span></a>
+      <a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kjerag%20Lysebotn%20Camping"><span class="num">6</span><span class="lbl"><b>Kjerag Lysebotn Camping</b><span>Sat night</span></span></a>
+      <a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Scandic%20Royal%20Stavanger"><span class="num">7</span><span class="lbl"><b>Scandic Royal Stavanger</b><span>Sun night (to book)</span></span></a>
+    </div>
+    <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Stavanger%20lufthavn%20Sola&destination=Stavanger&waypoints=Sirdal%20fjellpark%20Tj%C3%B8rhom%7C%C3%98ygardst%C3%B8l%7CKjerag%20Lysebotn%20Camping">▸ Open the full driving route in Google Maps</a>
+  </section>
 
   <!-- OVERVIEW -->
   <section id="overview">
